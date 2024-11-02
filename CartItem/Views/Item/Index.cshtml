@@ -1,0 +1,40 @@
+﻿@model IEnumerable<CartItem.Models.Item>
+
+@{
+    ViewData["Title"] = "Items";
+}
+
+<h2>Items</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Item</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Item ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Available Quantity</th>
+            <th>Updated Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ItemId</td>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td>@item.AvlQuantity</td>
+                <td>@item.UpdatedDate.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ItemId" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.ItemId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

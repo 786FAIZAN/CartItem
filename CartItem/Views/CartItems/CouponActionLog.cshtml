@@ -1,0 +1,34 @@
+﻿@model List<CartItem.Models.CouponActionLog>
+
+@{
+    ViewData["Title"] = "Coupon Action Logs";
+}
+
+<h2>Coupon Action Logs</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <p>No action logs found for this user.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Action Message</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var log in Model)
+            {
+                <tr>
+                    <td>@log.ActionMessage</td>
+                    <td>@log.Timestamp.ToString("g")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a asp-action="Index" class="btn btn-primary">Back to Cart</a>
